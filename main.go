@@ -50,6 +50,7 @@ func main() {
 
 	// fmt.Printf("Median: %d\n", stats.Median(values))
 	fmt.Printf("Variance: %d\n", int(math.Round(stats.Variance(values))))
+	fmt.Printf("Standard Deviation: %d\n", int(math.Round(stats.Stdev(values))))
 
 	if len(os.Args) > 2 {
 		fmt.Println("The arguments after index 1 were not necessary, but thanks for testing :)")
