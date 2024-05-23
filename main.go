@@ -11,6 +11,10 @@ import (
 )
 
 func main() {
+	FileInfo, file_info_err := os.Stat("data.txt")
+	if file_info_err != nil {
+		log.Fatal(file_info_err)
+	}
 	file, open_err := os.Open("data.txt")
 	if open_err != nil {
 		log.Fatal(open_err)
@@ -30,5 +34,11 @@ func main() {
 		values = append(values, dig)
 	}
 
-	fmt.Printf("Average: %d\n", stats.Average(values))
+	if FileInfo != nil && FileInfo.Size() == 0 {
+		fmt.Printf("Average: %d\n", 0)
+	} else {
+		fmt.Printf("Average: %d\n", stats.Average(values))
+	}
+
+	fmt.Printf("Median: %d\n", stats.Median(values))
 }
