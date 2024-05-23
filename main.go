@@ -11,11 +11,18 @@ import (
 )
 
 func main() {
-	FileInfo, file_info_err := os.Stat("data.txt")
+	if len(os.Args) < 2 {
+		fmt.Println("USAGE: go run main.go data.txt")
+		return
+	}
+
+	file_arg := os.Args[1]
+
+	FileInfo, file_info_err := os.Stat(file_arg)
 	if file_info_err != nil {
 		log.Fatal(file_info_err)
 	}
-	file, open_err := os.Open("data.txt")
+	file, open_err := os.Open(file_arg)
 	if open_err != nil {
 		log.Fatal(open_err)
 		return
@@ -41,4 +48,9 @@ func main() {
 	}
 
 	fmt.Printf("Median: %d\n", stats.Median(values))
+
+	if len(os.Args) > 2 {
+		fmt.Println("The arguments after index 1 were not necessary, but thanks for testing :)")
+		return
+	}
 }
