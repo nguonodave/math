@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"log"
+	"math"
 	"os"
 	"strconv"
 
@@ -44,10 +45,10 @@ func main() {
 	if FileInfo != nil && FileInfo.Size() == 0 {
 		fmt.Printf("Average: %d\n", 0)
 	} else {
-		fmt.Printf("Average: %d\n", stats.Average(values))
+		fmt.Printf("Average: %d\n", int(math.Round(stats.Average(values))))
 	}
 
-	fmt.Printf("Median: %d\n", stats.Median(values))
+	// fmt.Printf("Median: %d\n", stats.Median(values))
 
 	if len(os.Args) > 2 {
 		fmt.Println("The arguments after index 1 were not necessary, but thanks for testing :)")

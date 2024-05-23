@@ -1,12 +1,10 @@
 package stats
 
-import "math"
-
-func Average(values []float64) int {
+func Average(values []float64) float64 {
 	sum := 0.0
 	for _, num := range values {
 		sum += num
 	}
-	average := int(math.Round(sum / float64(len(values))))
+	average := sum / float64(len(values))
 	return average
 }
