@@ -48,7 +48,7 @@ func main() {
 		fmt.Printf("Average: %d\n", int(math.Round(stats.Average(values))))
 	}
 
-	// fmt.Printf("Median: %d\n", stats.Median(values))
+	fmt.Printf("Median: %d\n", int(math.Round(stats.Median(values))))
 	fmt.Printf("Variance: %d\n", int(math.Round(stats.Variance(values))))
 	fmt.Printf("Standard Deviation: %d\n", int(math.Round(stats.Stdev(values))))
 
