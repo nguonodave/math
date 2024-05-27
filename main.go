@@ -36,21 +36,20 @@ func main() {
 	for scanner.Scan() {
 		dig, str_num_err := strconv.ParseFloat(scanner.Text(), 64)
 		if str_num_err != nil {
-			log.Fatal("Please check the data.txt file, you probably entered a 'humongous' or invalid number")
+			log.Fatal("Please check the data.txt file, you probably entered an invalid number")
 			return
 		}
 		values = append(values, dig)
 	}
 
 	if FileInfo != nil && FileInfo.Size() == 0 {
-		fmt.Printf("Average: %d\n", 0)
+		fmt.Println("Seems you did not provide data in the data.txt file")
 	} else {
 		fmt.Printf("Average: %d\n", int(math.Round(stats.Average(values))))
+		fmt.Printf("Median: %d\n", int(math.Round(stats.Median(values))))
+		fmt.Printf("Variance: %d\n", int(math.Round(stats.Variance(values))))
+		fmt.Printf("Standard Deviation: %d\n", int(math.Round(stats.Stdev(values))))
 	}
-
-	fmt.Printf("Median: %d\n", int(math.Round(stats.Median(values))))
-	fmt.Printf("Variance: %d\n", int(math.Round(stats.Variance(values))))
-	fmt.Printf("Standard Deviation: %d\n", int(math.Round(stats.Stdev(values))))
 
 	if len(os.Args) > 2 {
 		fmt.Println("The arguments after index 1 were not necessary, but thanks for testing :)")

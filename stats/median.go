@@ -9,7 +9,7 @@ func Median(values []float64) float64 {
 
 	if len(values)%2 != 0 {
 		median = values[values_len/2]
-	} else {
+	} else if len(values) > 0 && len(values)%2 == 0 {
 		median = Average(values[values_len/2-1 : values_len/2+1])
 	}
 	return median
